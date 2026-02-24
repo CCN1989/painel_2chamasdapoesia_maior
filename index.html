@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ordem de Apresentação</title>
+
+<style>
+body {
+  margin: 0;
+  background: #ff8c00;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* CABEÇALHO REDUZIDO */
+#header {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  padding: 8px 15px;
+  background: #ff8c00;
+  border-bottom: 2px solid #c2410c;
+}
+
+.logo {
+  max-height: 80px; /* Reduzido */
+  max-width: 100%;
+}
+
+.header-center {
+  text-align: center;
+}
+
+.titulo {
+  font-size: 28px; /* Reduzido de 40px */
+  font-weight: bold;
+}
+
+.subtitulo {
+  font-size: 18px; /* Reduzido de 24px */
+  margin-top: 2px;
+}
+
+/* LEGENDA COMPACTA */
+.legenda-container {
+  margin: 5px auto 0;
+  width: 85%;
+  background: #ffffff;
+  overflow: hidden;
+  height: 28px; /* Reduzido */
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+.legenda-move {
+  display: block;
+  text-align: center;
+  font-size: 14px; /* Reduzido */
+  line-height: 28px;
+}
+
+.lg {
+  font-weight: bold;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.lg.npresente { color: #fff; background: #dc2626; }
+.lg.aguardando { color: #000; background: #facc15; }
+.lg.concluido { color: #fff; background: #16a34a; }
+
+/* CONTAINER */
+#container {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* TABELA COMPACTA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px; /* Reduzido de 22px */
+}
+
+thead {
+  background: #ffb347;
+}
+
+th {
+  padding: 8px 5px;
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 2px solid #c2410c;
+}
+
+td {
+  padding: 6px 5px; /* Reduzido de 12px */
+  text-align: center;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(odd) { background: #ffd8a8; }
+tbody tr:nth-child(even) { background: #ffcc80; }
+
+/* STATUS BOX MENOR */
+.status-box {
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 4px 8px;
+  display: inline-block;
+  min-width: 110px; /* Reduzido */
+  font-size: 14px;
+}
+
+.npresente { background: #dc2626 !important; color: #fff !important; }
+.aguardando { background: #facc15 !important; color: #000 !important; }
+.concluido { background: #16a34a !important; color: #fff !important; }
+
+/* RODAPÉ COMPACTO */
+#footer {
+  background: #ffffff;
+  color: #000;
+  height: 45px; /* Reduzido de 65px */
+  font-size: 20px; /* Reduzido de 28px */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-top: 3px solid #1a1a1a;
+}
+
+#relogio {
+  padding: 0 15px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border-right: 4px solid #ff8c00;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  z-index: 10;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.marquee-container {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="header">
+  <img src="Logo1.png" class="logo" alt="Logo">
+  <div class="header-center">
+    <div class="titulo">2º Chamas da Poesia – CTG Chama Nativa</div>
+    <div class="subtitulo">Ordem de apresentação</div>
+    <div class="legenda-container">
+      <div class="legenda-move">
+        <span class="lg npresente">Não presente</span>: Não presente no evento
+        <span class="lg aguardando">Aguardando</span>: Aguardando apresentação
+        <span class="lg concluido">Concluído</span>: Apresentação OK
+      </div>
+    </div>
+  </div>
+  <img src="Logo2.png" class="logo" alt="Logo">
+</div>
+
+<div id="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Ordem</th>
+        <th>Categoria</th>
+        <th>Concorrente</th>
+        <th>Entidade</th>
+        <th>Região</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="dados"></tbody>
+  </table>
+</div>
+
+<div id="footer">
+  <div id="relogio">00:00:00</div>
+  <div class="marquee-container">
+    <div class="marquee">Boa Sorte! visite www.ctgchamanativa.com.br&nbsp;&nbsp;&nbsp;&nbsp;Boa Sorte! visite www.ctgchamanativa.com.br&nbsp;&nbsp;&nbsp;&nbsp;Boa Sorte! visite www.ctgchamanativa.com.br&nbsp;&nbsp;&nbsp;&nbsp;Boa Sorte! visite www.ctgchamanativa.com.br</div>
+  </div>
+</div>
+
+<script>
+const URL = "https://script.google.com/macros/s/AKfycbySeJkdCX2zB6TqkDCYgljKTqW3AA6aC9AziFQjgdwEbUGuNNP1pFNTmBX8IqaB9MmZLg/exec";
+const tbody = document.getElementById("dados");
+
+// Ajustado para caber mais linhas na tela sem rolagem se necessário
+const LINHAS_POR_PAGINA = 20 
+const TEMPO_PAGINA = 7000;
+
+let dados = [];
+let paginaAtual = 0;
+
+function atualizarRelogio() {
+    const agora = new Date();
+    const h = String(agora.getHours()).padStart(2, '0');
+    const m = String(agora.getMinutes()).padStart(2, '0');
+    const s = String(agora.getSeconds()).padStart(2, '0');
+    document.getElementById("relogio").innerText = `${h}:${m}:${s}`;
+}
+
+function carregarDados() {
+  fetch(URL)
+    .then(r => r.json())
+    .then(lista => {
+      dados = lista;
+      if (paginaAtual === 0) renderizarPagina();
+    })
+    .catch(err => console.error("Erro ao carregar:", err));
+}
+
+function renderizarPagina() {
+  if (dados.length === 0) return;
+  
+  tbody.innerHTML = "";
+  const inicio = paginaAtual * LINHAS_POR_PAGINA;
+  const fim = inicio + LINHAS_POR_PAGINA;
+  const pagina = dados.slice(inicio, fim);
+
+  pagina.forEach(l => {
+    let statusTexto = l["Status"] || "";
+    let classeCor = "";
+    
+    let statusNormalizado = statusTexto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    if (statusNormalizado.includes("nao presente")) classeCor = "npresente";
+    else if (statusNormalizado.includes("aguardando")) classeCor = "aguardando";
+    else if (statusNormalizado.includes("concluido")) classeCor = "concluido";
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${l["Ordem"]}</td>
+      <td>${l["Categoria"]}</td>
+      <td>${l["Concorrente"]}</td>
+      <td>${l["Entidade"]}</td>
+      <td>${l["Região"]}</td>
+      <td><span class="status-box ${classeCor}">${statusTexto}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  paginaAtual++;
+  if (paginaAtual * LINHAS_POR_PAGINA >= dados.length) {
+    paginaAtual = 0;
+  }
+}
+
+carregarDados();
+atualizarRelogio();
+setInterval(atualizarRelogio, 1000);
+setInterval(renderizarPagina, TEMPO_PAGINA);
+setInterval(carregarDados, 30000);
+
+</script><br>
+<br>
+<center><img src="https://raw.githubusercontent.com/CCN1989/Imagens/refs/heads/main/SITE.png" width="500" height="100">
+<img src="https://raw.githubusercontent.com/CCN1989/Imagens/refs/heads/main/Estetica.png" width="160" height="100"></center><br>
+<br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
